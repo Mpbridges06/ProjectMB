@@ -1,0 +1,33 @@
+public class Exam extends Assessment {
+    private int numQuestions; // Total questions in the exam
+    private int numMissed;    // Number of questions missed
+    private double pointsEach; // Points per question
+
+    /**
+     * Constructor initializes questions and missed answers, and calculates score.
+     * @param questions Total number of questions on the exam.
+     * @param missed Number of questions missed.
+     */
+    public Exam(int questions, int missed) {
+        this.numQuestions = questions;
+        this.numMissed = missed;
+        calculateScore();
+    }
+
+    /**
+     * Calculates points per question and overall score.
+     */
+    private void calculateScore() {
+        pointsEach = 100.0 / numQuestions;
+        double numericScore = 100.0 - (numMissed * pointsEach);
+        setScore((int) numericScore);
+    }
+
+    /**
+     * Returns points per question.
+     * @return Points for each question.
+     */
+    public double getPointsEach() {
+        return pointsEach;
+    }
+}
